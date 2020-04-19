@@ -16,7 +16,7 @@ type SimpleConcurrentEngine struct {
 
 //Scheduler
 type Scheduler interface {
-	Submit(Request)                        //用于将Request送给worker的channel
+	Submit(Request)                        //用于将Request送给worker的channel,来一个request就创建一个groutine.
 	ConfigerMasterWorkerChan(chan Request) //配置workChan,实现也就是个赋值操作。
 }
 
@@ -34,7 +34,7 @@ func (e *SimpleConcurrentEngine) Run(seeds ...Request) {
 	//现在是由scheduler去把request提交
 	for _, r := range seeds {
 		//把request送进workerChan
-		e.Scheduler.Submit(r)
+		e.Scheduler.Submit(r) //每一个request来就会创建一个groutine.
 	}
 
 	itemCount := 0

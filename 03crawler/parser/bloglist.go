@@ -13,14 +13,15 @@ import (
 
 const blogListRe = `<h3><a class="titlelnk" href="(https://www.cnblogs.com/[a-zA-Z0-9]+/p/[0-9]+.html)" target="_blank">([^<]+)</a></h3>`
 
+var index = 0
+
 //传入contents，输出是一个request的一个item的集合
 func ParseBlogList(contents []byte) simple_con_engine.ParseResult {
 	re := regexp.MustCompile(blogListRe)
 	result := simple_con_engine.ParseResult{}
 	matches := re.FindAllSubmatch(contents, -1)
 
-	index := 1
-	pre := "https://www.cnblogs.com/#p"
+	pre := "https://www.cnblogs.com/sitehome/p/"
 	for _, m := range matches {
 		result.Items = append(result.Items, string(m[1])+","+string(m[2]))
 		index++

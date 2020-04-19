@@ -15,8 +15,3 @@ type ParseResult struct {
 	Requests []Request
 	Items    []interface{}
 }
-
-//为了让bloglist里的编译通过
-func NilParser([]byte) ParseResult {
-	return ParseResult{}
-}
