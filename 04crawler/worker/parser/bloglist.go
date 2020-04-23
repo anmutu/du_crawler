@@ -20,16 +20,15 @@ func ParseBlogList(contents []byte) con_engine.ParseResult {
 	re := regexp.MustCompile(blogListRe)
 	result := con_engine.ParseResult{}
 	matches := re.FindAllSubmatch(contents, -1)
-
 	pre := "https://www.cnblogs.com/sitehome/p/"
 	for _, m := range matches {
-		result.Items = append(result.Items, string(m[1])+","+string(m[2]))
 		index++
 		var build strings.Builder
 		build.WriteString(pre)
 		build.WriteString(strconv.Itoa(index))
 		url := build.String()
 		result.Requests = append(result.Requests, con_engine.Request{Url: url, ParserFunc: ParseBlogList})
+		result.Items = append(result.Items, string(m[1])+string(m[2]))
 	}
 	return result
 }

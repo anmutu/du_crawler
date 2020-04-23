@@ -20,11 +20,12 @@ func (s *QueuedScheduler) Submit(r con_engine.Request) {
 }
 
 //把request放到我们维护的worker的队列里。
+//engine里维护的worker队列里有数据了，可以交给Worker函数去fetch和parser了。就这么个意思。
 func (s *QueuedScheduler) WorkerReady(w chan con_engine.Request) {
 	s.workerChan <- w
 }
 
-//创建workerChan
+//创建worker的channel
 func (s *QueuedScheduler) WorkerChan() chan con_engine.Request {
 	return make(chan con_engine.Request)
 }
@@ -44,6 +45,7 @@ func (s *QueuedScheduler) Run() {
 				activeRequest = requestQ[0]
 				activeWorker = workerQ[0]
 			}
+			//收到一个request就让request排队，收到一个worker就让worker排队。所有的channel操作都放到select里。
 			select {
 			case r := <-s.requestChan:
 				requestQ = append(requestQ, r)

@@ -20,13 +20,13 @@ type Scheduler interface {
 	ConfigerMasterWorkerChan(chan Request) //配置workChan,实现也就是个赋值操作。
 }
 
-//这里是所有的worker共用一个输入，但是会有多个去处理送过来的输入。
 func (e *SimpleConcurrentEngine) Run(seeds ...Request) {
 	in := make(chan Request)
 	out := make(chan ParseResult)
 
 	//把in给到workerChan
 	e.Scheduler.ConfigerMasterWorkerChan(in)
+
 	for i := 0; i < e.WorkerCount; i++ {
 		createWorker(in, out)
 	}
@@ -56,6 +56,7 @@ func (e *SimpleConcurrentEngine) Run(seeds ...Request) {
 
 //创建worker，传入Request的channel
 func createWorker(in chan Request, out chan ParseResult) {
+
 	go func() {
 		for {
 			request := <-in

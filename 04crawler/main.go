@@ -13,7 +13,7 @@ import (
 func main() {
 	e := con_engine.ConcurrentEngine{
 		Scheduler:   &scheduler.QueuedScheduler{},
-		WorkerCount: 10,
+		WorkerCount: 100,
 	}
 	e.Run(con_engine.Request{
 		Url:        "https://www.cnblogs.com",
