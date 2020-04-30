@@ -11,7 +11,7 @@
 * 04crawler 队列调度器实现并发版本爬虫
 * 05crawler 分布式爬虫实现（部分）
 
-### 善于代码的相关文章介绍
+### 关于代码的相关文章介绍
 * [02crawler单任务版本爬虫的一点说明](https://www.cnblogs.com/anmutu/p/12725642.html)
 * [03crawler简单调度器实现并发版本爬虫的一点说明](https://www.cnblogs.com/anmutu/p/12734031.html)
 * [04crawler队列调度器实现并发版本爬虫的一点说明](https://www.cnblogs.com/anmutu/p/12765207.html)
