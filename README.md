@@ -16,4 +16,24 @@
 * [03crawler简单调度器实现并发版本爬虫的一点说明](https://www.cnblogs.com/anmutu/p/12734031.html)
 * [04crawler队列调度器实现并发版本爬虫的一点说明](https://www.cnblogs.com/anmutu/p/12765207.html)
 
+### 抓取效率的对比
+* 由02crawler的这篇文章和03crawler的这篇文章，可以对比到效率是提升非常明显的。
+
+### 如何run起来
+```
+跑每个文件的main都可以跑起来。（05分布式不同，需要先把rpc服务run起来，再run main文件）
+```
+
+### 如何对比效率
+```
+1. 用相关工具，查看网络，如Dr Cleaner等。
+2. 为各个版本定时，查看打印出来总数。
+3. 两者结合。
+```
+
+### 可以做进一步的工作
+1. 加入es
+2. template展示
+3. 可以使用脚本部署或者docker+Kubernetes部署
+4. 集成服务发现框架的加入，如consul。
 
