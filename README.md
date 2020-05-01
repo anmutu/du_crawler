@@ -35,7 +35,7 @@
 ```
 1. 加入es
 2. template展示
-3. 可以使用脚本部署或者docker+Kubernetes部署
+3. 可以使用脚本部署或者docker+k8s。
 4. 集成服务发现框架的加入，如consul。
 ```
 
