@@ -35,6 +35,7 @@ func blogTest() {
 	if err != nil {
 		panic(err)
 	}
+	// fmt.Println("contents=>", contents)
 	printBlogList(contents)
 }
 
@@ -42,11 +43,14 @@ func blogTest() {
 func printBlogList(contents []byte) {
 	//<h3><a class="titlelnk" href="https://www.cnblogs.com/ITnoteforlsy/p/12228149.html" target="_blank">B-Tree 和 B+Tree 结构及应用，InnoDB 引擎， MyISAM 引擎</a></h3>
 	//用"[a-zA-Z0-9]","[0-9]","[^<]"匹配。
-	re := regexp.MustCompile(`<h3><a class="titlelnk" href="https://www.cnblogs.com/[a-zA-Z0-9]+/p/[0-9]+.html" target="_blank">[^<]+</a></h3>`)
+	// re := regexp.MustCompile(`<h3><a class="titlelnk" href="https://www.cnblogs.com/[a-zA-Z0-9]+/p/[0-9]+.html" target="_blank">[^<]+</a></h3>`)
+
+	//<a class="post-item-title" href="https://www.cnblogs.com/panda-xin/p/15905499.html" target="_blank">01 MySQL数据库安装（Windows+Mac）</a>
+	re := regexp.MustCompile(`<a class="post-item-title" href="https://www.cnblogs.com/[a-zA-Z0-9]+/p/[0-9]+.html" target="_blank">[^<]+</a>`)
+
 	mathes := re.FindAll(contents, -1)
 	for _, m := range mathes {
 		fmt.Printf("%s\n", m)
 	}
 	fmt.Println(len(mathes))
 }
-
