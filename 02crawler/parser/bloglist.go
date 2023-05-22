@@ -2,6 +2,7 @@
   author='du'
   date='2020/1/25 14:30'
 */
+
 package parser
 
 import (
@@ -18,7 +19,7 @@ const blogListRe = `<a class="post-item-title" href="(https://www.cnblogs.com/[a
 
 var index = 0
 
-//传入contents，输出是一个request的一个item的集合
+// ParseBlogList 传入contents，输出是一个request的一个item的集合
 func ParseBlogList(contents []byte) engine.ParseResult {
 	re := regexp.MustCompile(blogListRe)
 	result := engine.ParseResult{}

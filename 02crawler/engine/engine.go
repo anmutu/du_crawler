@@ -1,7 +1,8 @@
 /*
-  author='du'
-  date='2020/1/24 11:16'
+author='du'
+date='2020/1/24 11:16'
 */
+
 package engine
 
 import (
@@ -11,7 +12,7 @@ import (
 
 type SimpleEngine struct{}
 
-//传入Request的种子。
+// Run 传入Request的种子。
 func (e SimpleEngine) Run(seeds ...Request) {
 
 	//把seeds里的放到requests里。
@@ -42,7 +43,7 @@ func (e SimpleEngine) Run(seeds ...Request) {
 	}
 }
 
-//传入Request结构体，返回ParseResult。
+// 传入Request结构体，返回ParseResult。
 func (SimpleEngine) worker(r Request) (ParseResult, error) {
 	log.Printf("fetching %s", r.Url)
 	body, err := fetcher.Fetch(r.Url)

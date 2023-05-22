@@ -1,7 +1,8 @@
 /*
-  author='du'
-  date='2020/4/14 13:43'
+author='du'
+date='2020/4/14 13:43'
 */
+
 package main
 
 import (
@@ -15,5 +16,4 @@ func main() {
 		Url:        "https://www.cnblogs.com",
 		ParserFunc: parser.ParseBlogList,
 	})
-
 }
