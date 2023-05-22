@@ -2,6 +2,7 @@
   author='du'
   date='2020/1/25 14:30'
 */
+
 package parser
 
 import (
@@ -11,11 +12,13 @@ import (
 	"strings"
 )
 
-const blogListRe = `<h3><a class="titlelnk" href="(https://www.cnblogs.com/[a-zA-Z0-9]+/p/[0-9]+.html)" target="_blank">([^<]+)</a></h3>`
+//const blogListRe = `<h3><a class="titlelnk" href="(https://www.cnblogs.com/[a-zA-Z0-9]+/p/[0-9]+.html)" target="_blank">([^<]+)</a></h3>`
+
+const blogListRe = `<a class="post-item-title" href="(https://www.cnblogs.com/[a-zA-Z0-9]+/p/[0-9]+.html)" target="_blank">([^<]+)</a>`
 
 var index = 0
 
-//传入contents，输出是一个request的一个item的集合
+// ParseBlogList 传入contents，输出是一个request的一个item的集合
 func ParseBlogList(contents []byte) con_engine.ParseResult {
 	re := regexp.MustCompile(blogListRe)
 	result := con_engine.ParseResult{}

@@ -1,6 +1,6 @@
 /*
-  author='du'
-  date='2020/4/18 21:34'
+author='du'
+date='2020/4/18 21:34'
 */
 package main
 
@@ -13,7 +13,7 @@ import (
 func main() {
 	e := con_engine.ConcurrentEngine{
 		Scheduler:   &scheduler.QueuedScheduler{},
-		WorkerCount: 100,
+		WorkerCount: 50,
 	}
 	e.Run(con_engine.Request{
 		Url:        "https://www.cnblogs.com",
