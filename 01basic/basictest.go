@@ -1,7 +1,8 @@
 /*
-  author='du'
-  date='2020/1/28 13:42'
+author='du'
+date='2020/1/28 13:42'
 */
+
 package main
 
 import (
@@ -39,7 +40,7 @@ func blogTest() {
 	printBlogList(contents)
 }
 
-//传入拉取下来的网页内容，进行正则匹配，并打印结果。
+// 传入拉取下来的网页内容，进行正则匹配，并打印结果。
 func printBlogList(contents []byte) {
 	//<h3><a class="titlelnk" href="https://www.cnblogs.com/ITnoteforlsy/p/12228149.html" target="_blank">B-Tree 和 B+Tree 结构及应用，InnoDB 引擎， MyISAM 引擎</a></h3>
 	//用"[a-zA-Z0-9]","[0-9]","[^<]"匹配。
@@ -48,9 +49,9 @@ func printBlogList(contents []byte) {
 	//<a class="post-item-title" href="https://www.cnblogs.com/panda-xin/p/15905499.html" target="_blank">01 MySQL数据库安装（Windows+Mac）</a>
 	re := regexp.MustCompile(`<a class="post-item-title" href="https://www.cnblogs.com/[a-zA-Z0-9]+/p/[0-9]+.html" target="_blank">[^<]+</a>`)
 
-	mathes := re.FindAll(contents, -1)
-	for _, m := range mathes {
+	matches := re.FindAll(contents, -1)
+	for _, m := range matches {
 		fmt.Printf("%s\n", m)
 	}
-	fmt.Println(len(mathes))
+	fmt.Println(len(matches))
 }
